@@ -11,21 +11,26 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 1. Servir les fichiers statiques de chaque dossier
+// 1. Déclarer les dossiers statiques
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/youtube', express.static(path.join(__dirname, 'youtube')));
+app.use('/reddit', express.static(path.join(__dirname, 'reddit')));
 app.use('/spotify', express.static(path.join(__dirname, 'spotify', 'public')));
 
-// 2. Routes principales pour charger les pages index.html
+// 2. Redirections vers les index.html respectifs
 app.get('/youtube', (req, res) => {
   res.sendFile(path.join(__dirname, 'youtube', 'index.html'));
+});
+
+app.get('/reddit', (req, res) => {
+  res.sendFile(path.join(__dirname, 'reddit', 'index.html'));
 });
 
 app.get('/spotify', (req, res) => {
   res.sendFile(path.join(__dirname, 'spotify', 'public', 'index.html'));
 });
 
-// 3. API YouTube (charge la clé du .env)
+// 3. API YouTube
 app.get('/api/youtube/search', async (req, res) => {
   const { query } = req.query;
   const apiKey = process.env.YOUTUBE_API_KEY;
@@ -45,6 +50,10 @@ app.get('/api/youtube/search', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Serveur prêt sur http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Serveur lancé sur http://localhost:${PORT}`);
+  });
+}
+
+export default app;

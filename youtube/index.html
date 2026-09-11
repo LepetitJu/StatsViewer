@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTubeStatsViewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>YouTube<span>StatsViewer</span></h1>
+      <p>Analysez n'importe quelle chaîne ou vidéo en un instant</p>
+    </header>
+
+    <div class="search-box">
+      <div class="input-group">
+        <input type="text" id="search-input" placeholder="Nom de la chaîne ou identifiant...">
+        <button id="search-btn">Rechercher</button>
+      </div>
+    </div>
+
+    <div id="loader" class="hidden">Chargement des données...</div>
+    <div id="error-message" class="error hidden"></div>
+
+    <main id="results" class="hidden">
+      <section class="channel-card">
+        <img id="channel-avatar" src="" alt="Avatar de la chaîne">
+        <div class="channel-info">
+          <h2 id="channel-title"></h2>
+          <p id="channel-description"></p>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <h3>Abonnés</h3>
+          <p id="stat-subscribers" class="stat-value">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Vues Totales</h3>
+          <p id="stat-views" class="stat-value">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Vidéos Publiées</h3>
+          <p id="stat-videos" class="stat-value">0</p>
+        </div>
+        <div class="stat-card highlight">
+          <h3>Revenus Estimés (Total)</h3>
+          <p id="stat-earnings" class="stat-value">0 €</p>
+          <span class="sub-text">Basé sur un RPM moyen de 1,50 € / 1k vues</span>
+        </div>
+      </section>
+
+      <h3>Dernières Vidéos & Shorts</h3>
+      <div id="video-grid" class="video-grid"></div>
+    </main>
+  </div>
+  
+  <footer>© Copyright - YouTubeStatsViewer</footer>
+  <script src="script.js"></script>
+</body>
+</html>
