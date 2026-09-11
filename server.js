@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/youtube', express.static(path.join(__dirname, 'youtube')));
 app.use('/reddit', express.static(path.join(__dirname, 'reddit')));
-app.use('/spotify', express.static(path.join(__dirname, 'spotify', 'public')));
+app.use('/spotify', express.static(path.join(__dirname, 'spotify')));
 
 // 2. Redirections vers les index.html respectifs
 app.get('/youtube', (req, res) => {
@@ -27,7 +27,7 @@ app.get('/reddit', (req, res) => {
 });
 
 app.get('/spotify', (req, res) => {
-  res.sendFile(path.join(__dirname, 'spotify', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'spotify', 'index.html'));
 });
 
 // 3. API YouTube
