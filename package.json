@@ -1,5 +1,5 @@
 {
-  "name": "statsviewer",
+  "name": "Stats Viewer Website",
   "version": "1.0.0",
   "description": "Visualiseur de statistiques pour YouTube, Spotify et Reddit",
   "main": "server.js",
